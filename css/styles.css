@@ -38,13 +38,15 @@ button {
 /* //reset styles */
 
 /* Modal-Window */
-.backdrop{
+.backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(46, 47, 66, 0.4);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden {
   opacity: 0;
@@ -54,11 +56,14 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   width: 408px;
   height: 576px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background: #fcfcfc;
-  
+}
+.backdrop.is-hidden .modal{
+  transform: scale(0.7) translate(-60%, 30%);
 }
 .button-closed {
   position: absolute;
@@ -74,6 +79,16 @@ button {
   border-radius: 50%;
   background: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.button-closed:hover,
+.button-closed:focus {
+  
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-button {
@@ -136,9 +151,9 @@ button {
   padding-bottom: 24px;
 }
 
-.studio-portfolio::after{
-  content:'';
-  display:block;
+.studio-portfolio::after {
+  content: "";
+  display: block;
   position: relative;
   top: 22px;
   width: 48px;
@@ -147,9 +162,9 @@ button {
   background: var(--interactive-color);
 }
 
-.portfolio-studio::after{
-  content:'';
-  display:block;
+.portfolio-studio::after {
+  content: "";
+  display: block;
   position: relative;
   top: 22px;
   width: 66px;
@@ -190,10 +205,56 @@ button {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
+.img-portfolio:hover .hidden-div::before {
+  transform: translateY(0);
+}
+.hidden-div {
+  position: relative;
+}
+.hidden-div::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 360px;
+  height: 300px;
+  background-color: var(--interactive-color);
+  transform: translateY(100%);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hidden-div {
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  top: 40px;
+  left: 32px;
+  right: 32px;
+  width: 296px;
+  height: 96px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--color-logo);
+}
+.hidden-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100%);
+}
+.portfolio-item:hover .hidden-text {
+  transform: translateY(0);
+}
+
 .img-portfolio:hover,
 .img-portfolio:focus {
   box-shadow: 0px 1px 6px rgb(46 47 66 / 8%), 0px 1px 1px rgb(46 47 66 / 16%),
     0px 2px 1px rgb(46 47 66 / 8%);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .our-offers {
   padding-left: 16px;
@@ -290,11 +351,13 @@ button {
   height: 40px;
   padding: 12px;
   border-radius: 50%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--interactive-color);
 }
 .social-link:hover,
 .social-link:focus {
   background-color: #404bbf;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* Customers */
 .customers-company {
@@ -319,6 +382,7 @@ button {
   height: 88px;
   border: 1px solid var(--logo-company);
   border-radius: 4px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .logo-company {
   width: 104px;
@@ -329,6 +393,7 @@ button {
 .castomers-link:focus {
   border-color: var(--interactive-color);
   fill: var(--interactive-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* /Customers */
@@ -395,7 +460,9 @@ button {
   border-radius: 50%;
   width: 100%;
   height: 100%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(255, 255, 255, 0.1);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-images {
   width: 24px;
@@ -405,6 +472,7 @@ button {
 .footer-link:hover,
 .footer-link:focus {
   background-color: #31d0aa;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* /FOOTER */
 
@@ -417,15 +485,17 @@ button {
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
-.menu-link-webstudio{
+.menu-link-webstudio {
   font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-letter-spacing: 0.02em;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-link-webstudio:hover,
 .menu-link-webstudio:focus {
   color: var(--interactive-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .team-list {
   list-style: none;
@@ -465,11 +535,13 @@ header {
   letter-spacing: 0.02em;
   color: var(--secondary-color);
   text-decoration: none;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-link-portfolio:hover,
 .menu-link-portfolio:focus {
   color: var(--interactive-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-link {
   font-weight: 500;
@@ -478,6 +550,7 @@ header {
   letter-spacing: 0.02em;
   color: var(--paragraph-color);
   text-decoration: none;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-link-hed {
   margin-right: 40px;
@@ -489,14 +562,17 @@ header {
   letter-spacing: 0.02em;
   color: var(--paragraph-color);
   text-decoration: none;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-link:hover,
 .menu-link:focus {
   color: var(--interactive-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-link-contact:hover,
 .menu-link-contact:focus {
   color: var(--interactive-color);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* <!--//Site header--> */
 /* HERO */
@@ -518,12 +594,14 @@ header {
   color: var(--brand-color);
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus {
   background-color: #4d5ae5;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:active {
   background: #404bbf;
@@ -642,6 +720,7 @@ header {
   color: var(--interactive-color);
   border-color: var(--color-logo);
   border: 1px solid #e7e9fc;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .all-buttons:hover,
 .all-buttons:focus {
@@ -651,6 +730,7 @@ header {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .paragraf-text-portfolio {
   color: var(--paragraph-color);
