@@ -240,10 +240,9 @@ button {
   padding-top: 192px;
   padding-bottom: 192px;
   background-image: linear-gradient(
-      rgba(46, 47, 66, 0.7),
-      rgba(46, 47, 66, 0.7)
-    ),
-    url(../images/webstudio/background\ of\ the\ hero.jpg);
+  rgba(46, 47, 66, 0.7),
+rgba(46, 47, 66, 0.7)),
+  url(../images/webstudio/background\ of\ the\ hero.jpg);
   background-size: cover;
   max-width: 1440px;
   margin: 0 auto;
@@ -700,9 +699,9 @@ header {
   letter-spacing: 0.01em;
   color: var(--paragraph-color);
 }
-/* .hidden-paragraf{
-  width: 264px;
-} */
+.paragraf-our-team{
+  margin-bottom: 8px;
+}
 .team {
   background: #f4f4fd;
 }
